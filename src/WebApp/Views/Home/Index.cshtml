@@ -2,132 +2,131 @@
 @{
     ViewBag.Title = "Index";
 }
-<script src="~/Scripts/jquery-3.1.1.js"></script>
 <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet"/>
 <script>
-     $(document).ready(function () {
-     var url = "";
-     $("#dialog-alert").dialog({
-     autoOpen: false,
-     resizable: false,
-     height: 170,
-     width: 350,
-     show: { effect: 'drop', direction: "up" },
-     modal: true,
-     draggable: true,
-     open: function (event, ui) {
-     $(".ui-dialog-titlebar-close").hide();
-     },
-     buttons: {
-     "OK": function () {
-     $(this).dialog("close");
+    $(document).ready(function() {
+        var url = "";
+        $("#dialog-alert").dialog({
+            autoOpen: false,
+            resizable: false,
+            height: 170,
+            width: 350,
+            show: { effect: 'drop', direction: "up" },
+            modal: true,
+            draggable: true,
+            open: function(event, ui) {
+                $(".ui-dialog-titlebar-close").hide();
+            },
+            buttons: {
+                "OK": function() {
+                    $(this).dialog("close");
 
-     },
-     "Cancel": function () {
-     $(this).dialog("close");
-     }
-     }
-     });
+                },
+                "Cancel": function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
 
-     if ('@TempData["msg"]' != "") {
-     $("#dialog-alert").dialog('open');
-     }
+        if ('@TempData["msg"]' != "") {
+            $("#dialog-alert").dialog('open');
+        }
 
-     $("#dialog-edit").dialog({
-     title: 'Create User',
-     autoOpen: false,
-     resizable: false,
-     width: 400,
-     show: { effect: 'drop', direction: "up" },
-     modal: true,
-     draggable: true,
-     open: function (event, ui) {
-     $(".ui-dialog-titlebar-close").hide();
-     $(this).load(url);
-     }
-     });
+        $("#dialog-edit").dialog({
+            title: 'Create User',
+            autoOpen: false,
+            resizable: false,
+            width: 400,
+            show: { effect: 'drop', direction: "up" },
+            modal: true,
+            draggable: true,
+            open: function(event, ui) {
+                $(".ui-dialog-titlebar-close").hide();
+                $(this).load(url);
+            }
+        });
 
-     $("#dialog-confirm").dialog({
-     autoOpen: false,
-     resizable: false,
-     height: 170,
-     width: 350,
-     show: { effect: 'drop', direction: "up" },
-     modal: true,
-     draggable: true,
-     open: function (event, ui) {
-     $(".ui-dialog-titlebar-close").hide();
+        $("#dialog-confirm").dialog({
+            autoOpen: false,
+            resizable: false,
+            height: 170,
+            width: 350,
+            show: { effect: 'drop', direction: "up" },
+            modal: true,
+            draggable: true,
+            open: function(event, ui) {
+                $(".ui-dialog-titlebar-close").hide();
 
-     },
-     buttons: {
-     "OK": function () {
-     $(this).dialog("close");
-     window.location.href = url;
-     },
-     "Cancel": function () {
-     $(this).dialog("close");
-     }
-     }
-     });
+            },
+            buttons: {
+                "OK": function() {
+                    $(this).dialog("close");
+                    window.location.href = url;
+                },
+                "Cancel": function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
 
-     $("#dialog-detail").dialog({
-     title: 'View User',
-     autoOpen: false,
-     resizable: false,
-     width: 400,
-     show: { effect: 'drop', direction: "up" },
-     modal: true,
-     draggable: true,
-     open: function (event, ui) {
-     $(".ui-dialog-titlebar-close").hide();
-     $(this).load(url);
-     },
-     buttons: {
-     "Close": function () {
-     $(this).dialog("close");
-     }
-     }
-     });
+        $("#dialog-detail").dialog({
+            title: 'View User',
+            autoOpen: false,
+            resizable: false,
+            width: 400,
+            show: { effect: 'drop', direction: "up" },
+            modal: true,
+            draggable: true,
+            open: function(event, ui) {
+                $(".ui-dialog-titlebar-close").hide();
+                $(this).load(url);
+            },
+            buttons: {
+                "Close": function() {
+                    $(this).dialog("close");
+                }
+            }
+        });
 
-     $("#lnkCreate").live("click", function (e) {
-     //e.preventDefault(); //use this or return false
-     url = $(this).attr('href');
-     $("#dialog-edit").dialog('open');
+        $("#lnkCreate").on("click", function(e) {
+            //e.preventDefault(); //use this or return false
+            url = $(this).attr('href');
+            $("#dialog-edit").dialog('open');
 
-     return false;
-     });
+            return false;
+        });
 
-     $(".lnkEdit").live("click", function (e) {
-     // e.preventDefault(); use this or return false
-     url = $(this).attr('href');
-     $(".ui-dialog-title").html("Update User");
-     $("#dialog-edit").dialog('open');
+        $(".lnkEdit").on("click", function(e) {
+            // e.preventDefault(); use this or return false
+            url = $(this).attr('href');
+            $(".ui-dialog-title").html("Update User");
+            $("#dialog-edit").dialog('open');
 
-     return false;
-     });
+            return false;
+        });
 
-     $(".lnkDelete").live("click", function (e) {
-     // e.preventDefault(); use this or return false
-     url = $(this).attr('href');
-     $("#dialog-confirm").dialog('open');
+        $(".lnkDelete").on("click", function (e) {
+            // e.preventDefault(); use this or return false
+            url = $(this).attr('href');
+            $("#dialog-confirm").dialog('open');
 
-     return false;
-     });
+            return false;
+        });
 
-     $(".lnkDetail").live("click", function (e) {
-     // e.preventDefault(); use this or return false
-     url = $(this).attr('href');
-     $("#dialog-detail").dialog('open');
+        $(".lnkDetail").on("click", function (e) {
+            // e.preventDefault(); use this or return false
+            url = $(this).attr('href');
+            $("#dialog-detail").dialog('open');
 
-     return false;
-     });
+            return false;
+        });
 
-     $("#btncancel").live("click", function (e) {
-     $("#dialog-edit").dialog("close");
-     return false;
-     });
-     });
+        $("#btncancel").on("click", function (e) {
+            $("#dialog-edit").dialog("close");
+            return false;
+        });
+    });
 </script>
 <div id="dialog-alert" style="display: none">
     <p>
